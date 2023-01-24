@@ -51,6 +51,7 @@ vision_img = Image.open(r'resources/imgs/vision.jpg')
 mission_img = Image.open(r'resources/imgs/mission.jpg')
 team_img = Image.open(r'resources/imgs/team.jpg')
 logo = Image.open(r'resources/imgs/logo.png')
+news_image = Image.open(r'resources/imgs/news.jpg')
 #load team member photos
 ngalwethu = Image.open(r'resources/imgs/Ngalwetu.png')
 collins = Image.open(r'resources/imgs/Collins.jpg')
@@ -73,7 +74,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Home","Our Team", "Data Overview", "Recommender System","Solution Overview"]
+    page_options = ["Home","Our Team", "Data Overview", "Recommender System","Solution Overview", "News"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -142,7 +143,7 @@ def main():
 
         st.markdown(page_bg_img, unsafe_allow_html=True)
 
-        st.title('Hi there :wave: we are CW-3')
+        st.title('Hi there 👋 we are CW-3')
         st.write('---')
         st.write('###')
         st.write("""\n We are a team of data scientists at [EXPLORE Data science academy](https://www.explore.ai/)  
@@ -202,6 +203,8 @@ def main():
         
         with right_column:
             st.image(logo)
+
+            
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
@@ -279,6 +282,49 @@ def main():
             st.write('Visit our website: www.showstack.org')
         with right_column:
             st.image(logo)
+
+    if page_selection == "News":
+
+	    st.title("Get The Latest movie and entertainment News")
+	    st.write('---')
+		
+	    st.write("""Get the latest releases and movie ratings all on one platform.
+        Get to know about expected release dates, trailer releases and future releases of your
+        favourite movies. No spoilers allowed 🚫. If you are stuck in the old movie trap, this is the easiest way 
+        to get ahead in matters movies
+		"""
+		)
+	    st.write('##')
+	    st.image(news_image, width=600, caption="https://www.pexels.com/photo/turned-on-phone-displaying-collections-book-242492/")
+	    st.write('---')
+	    st.write("""
+		With a single click, get the latest articles in the film industry and save yourself two hours of watching a boring
+        screenpiece. We are sure you will not need this (our models are that good) but why not 
+        give you a chance to see the latest trends in movies from reputable news outlets. 
+		""")
+	    btn = st.button("Click to get latest on movies and series")
+
+	    if btn:
+		    url ="https://newsapi.org/v2/everything?"
+		    request_params = {
+				"q": 'Movies OR film OR oscars OR holywood OR netflix OR HBO',
+				"sort by": "latest",
+				"language": 'en',
+				"apikey": "950fae5906d4465cb25932f4c5e1202c"
+			}
+		    r = requests.get(url, request_params)
+		    r = r.json()
+		    articles = r['articles']
+
+		    for article in articles:
+			    st.header(article['title'])
+			    if article['author']:
+				    st.write(f"Author: {article['author']}")
+			    st.write(f"Source: {article['source']['name']}")
+			    st.write(article['description'])
+			    st.write(f"link to article: {article['url']}")
+			    st.image(article['urlToImage'])
+
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
