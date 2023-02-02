@@ -155,9 +155,6 @@ def main():
             st.write("""To become industry leaders in providing applicable solutions to problems using
             data """)
         
-        with right_column:
-            st.image('resources/imgs/vision.jpg')
-        
         
        
         st.header('Contact us')
