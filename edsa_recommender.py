@@ -156,7 +156,7 @@ def main():
             data """)
         
         with right_column:
-            st.image('resources/imgs/vision.jpg', use_column_width = True)
+            st.image('resources/imgs/vision.jpg')
         
         
        
