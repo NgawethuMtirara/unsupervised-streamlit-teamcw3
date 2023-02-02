@@ -46,17 +46,6 @@ from recommenders.content_based import content_model
 # Data Loading
 title_list = load_movie_titles('resources/data/movies.csv')
 
-#load image resources 
-vision_img = Image.open(r'resources/imgs/vision.jpg')
-mission_img = Image.open(r'resources/imgs/mission.jpg')
-team_img = Image.open(r'resources/imgs/team.jpg')
-logo = Image.open(r'resources/imgs/logo.png')
-news_image = Image.open(r'resources/imgs/news.jpg')
-#load team member photos
-ngalwethu = Image.open(r'resources/imgs/Ngalwetu.png')
-collins = Image.open(r'resources/imgs/Collins.jpg')
-Idongesit = Image.open(r'resources/imgs/Idongesit.jpg')
-demo = Image.open(r'resources/imgs/demo.jpg')
 
 #create a lottie loading algorithm
 def load_lottieurl(url):
@@ -70,7 +59,7 @@ home_lottie = load_lottieurl('https://assets9.lottiefiles.com/private_files/lf30
 
 # App declaration
 def main():
-    st.image(logo, width=100)
+    st.image('resources/imgs/logo.png', width=100)
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
@@ -132,16 +121,6 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == 'Home':
 
-        page_bg_img = '''
-        <style>
-        body {
-        background-image: url("https://www.pexels.com/photo/computer-and-laptop-over-white-table-8636589/");
-        background-size: cover;
-        }
-        </style>
-        '''
-
-        st.markdown(page_bg_img, unsafe_allow_html=True)
 
         st.title('Hi there 👋 we are CW-3')
         st.write('---')
@@ -164,7 +143,7 @@ def main():
             cutting edge solutions to localised real-world problems  """)
 
         with right_column:
-            st.image(mission_img, use_column_width=True)
+            st.image('resources/imgs/mission.jpg', use_column_width=True)
         st.header('vision')
         st.write('---')
         st.write('###')
@@ -177,7 +156,7 @@ def main():
             data """)
         
         with right_column:
-            st.image(vision_img)
+            st.image('resources/imgs/vision.jpg', use_column_width = True)
         
         
        
@@ -202,7 +181,7 @@ def main():
             locall_css(("style/style.css"))
         
         with right_column:
-            st.image(logo)
+            st.image('resources/imgs/logo.png', use_column_width=True)
 
     if page_selection == 'Our Team':
         st.title('Meet our amazing team of Data Scientists')
@@ -214,7 +193,7 @@ def main():
         We pride ourselves in our teamwork and mutual understanding ensuring prompt
         delivery of products
         """)
-        st.image(team_img)
+        st.image('resources/imgs/Team.jpg', use_column_width=True)
 
         st.write('---')
         st.header('The Team')
@@ -230,42 +209,42 @@ def main():
                 \n Data scientist''')
         
             with center_column:
-                st.image(ngalwethu, width=150, caption="Ngalwetu Mtirara. \n Team lead")
+                st.image('resources/imgs/Ngalwetu.png', caption="Ngalwetu Mtirara. \n Team lead")
             st.write('---')
             left_column, center_column, right_column = st.columns((2,2,2))
 
             with left_column:
-                st.image(Idongesit, width=150, caption='Idongesit Bokeime. Data analyst')
+                st.image('resources/imgs/Idongesit.jpg', width=150, caption='Idongesit Bokeime. Data analyst')
                 st.write('#')
                 st.write('''Idongesit is a Data analyst with us. 
                 she mainly deals with presentations''')
                 st.write('---')
 
-                st.image(collins, width=150, caption ='Collins Tlou. Data scientist')
+                st.image('resources/imgs/Collins.jpg', width=150, caption ='Collins Tlou. Data scientist')
                 st.write('''Collins is a Data scientist with us. 
                 He mainly deals with modelling''')
             
             with center_column:
 
-                st.image(demo, width=150, caption='Pharis Ihaki. Data scientist')
+                st.image('resources/imgs/demo.jpg', width=150, caption='Pharis Ihaki. Data scientist')
                 st.write('''Ihaki is a Data scientist with us. 
                 He mainly deals with model deployment''')
                 st.write('')
                 st.write('---')
 
-                st.image(demo, width=150, caption='Sibusiso Sibiya. Data Analyst')
+                st.image('resources/imgs/demo.jpg', width=150, caption='Sibusiso Sibiya. Data Analyst')
                 st.write('''Sibusiso is a Data scientist with us. 
                 He mainly deals with data visualisation''')
 
             with right_column:
 
-                st.image(demo, width=150, caption = 'Daniel Uwaoma. Data scientist')
+                st.image('resources/imgs/demo.jpg', width=150, caption = 'Daniel Uwaoma. Data scientist')
                 st.write('''Daniel is a Data scientist with us. 
                 He mainly deals with Web app development ''')
                 st.write('')
                 st.write('---')
 
-                st.image(demo, width=150, caption = 'Mbuyiselo Mkwanazi. Data scientist')
+                st.image('resources/imgs/demo.jpg', width=150, caption = 'Mbuyiselo Mkwanazi. Data scientist')
                 st.write('''Mbuyiselo is a Data scientist with us. 
                 He mainly deals with modelling''')
             st.write('---')
@@ -276,7 +255,7 @@ def main():
             st.write('✉   Email us: info@showstack.inc')
             st.write('Visit our website: www.showstack.org')
         with right_column:
-            st.image(logo)
+            st.image('resources/imgs/logo.png')
 
     if page_selection == "News":
 
@@ -290,7 +269,7 @@ def main():
 		"""
 		)
 	    st.write('##')
-	    st.image(news_image, width=600, caption="https://www.pexels.com/photo/turned-on-phone-displaying-collections-book-242492/")
+	    st.image('resources/imgs/news.jpg', width=600, caption="https://www.pexels.com/photo/turned-on-phone-displaying-collections-book-242492/")
 	    st.write('---')
 	    st.write("""
 		With a single click, get the latest articles in the film industry and save yourself two hours of watching a boring
@@ -364,19 +343,19 @@ def main():
             st.write('---')
             st.write('rating distribution for all movies. The average rating lies at 4')
             ratings_img = Image.open(r'resources/imgs/rating_distribution.PNG')
-            st.image(ratings_img)
+            st.image('resources/imgs/rating_distribution.PNG')
 
         if btn == 'top actors':
             st.write('---')
             st.write('Top twenty actors in the dataset')
             actors_img = Image.open(r'resources/imgs/actors_distribution.PNG')
-            st.image(actors_img)
+            st.image('resources/imgs/actors_distribution.PNG')
 
         if btn =='genre distribution':
             st.write('---')
             genres_img = Image.open(r'resources/imgs/genres.PNG')
             st.write('Top twenty genres on the dataset')
-            st.image(genres_img)
+            st.image('resources/imgs/genres.PNG')
     if page_selection == 'Solution Overview':
         st.header('Our solution')
         st.markdown("""
@@ -416,7 +395,7 @@ def main():
 
         st.write('**Visual represenation of the performance of our model**')
         evaluation_img = Image.open(r'resources/imgs/model_evaluation.PNG')
-        st.image(evaluation_img)
+        st.image('resources/imgs/model_evaluation.PNG')
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
