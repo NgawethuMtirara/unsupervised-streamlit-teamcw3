@@ -74,7 +74,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Home","Our Team", "Data Overview", "Recommender System","Solution Overview", "News"]
+    page_options = ["Home","Our Team", "Data Overview","Solution Overview", "Recommender System", "News"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -204,11 +204,6 @@ def main():
         with right_column:
             st.image(logo)
 
-            
-    if page_selection == "Solution Overview":
-        st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
-
     if page_selection == 'Our Team':
         st.title('Meet our amazing team of Data Scientists')
         st.write('---')
@@ -324,8 +319,104 @@ def main():
 			    st.write(article['description'])
 			    st.write(f"link to article: {article['url']}")
 			    st.image(article['urlToImage'])
+    if page_selection == 'Data Overview':
+        st.title('Get a glimpse of our dataset 👀')
+        st.write('---')
+        st.write('###')
+        st.write(
+            '''The dataset contains features that are both cartegorical and numeric. All the features played a 
+            big role in our model development and feature engineering sections of our solution development.
+            We shall look at some of the features grouped into either cartegorical or numeric
+        '''
+        )
+        st.write('---')
+        st.write('###')
 
+        left_column, right_column = st.columns((1,1))
 
+        with left_column:
+            st.header('Cartegorical features')
+            st.markdown("""
+            * Movie id - unique identifier for each movie
+            * User id - unique identifier for each user
+            * title -movie title
+            * genre - movie genre
+            * tag -
+            """)
+
+        with right_column:
+            st.header('Numeric features')
+            st.markdown("""
+            * Ratings - movie rating for each movie
+            * runtime - movie run time from start to finish
+            * relevance - movie relevance
+            * Timestamp - 
+            * budget - movie budget
+            """)
+        
+        st.write('---')
+        st.header('Explore some of the feature distributions of the data')
+        btn = st.radio("Select relevant visuals to view",
+        ('Rating distribution', 'top actors', 'genre distribution' ))
+        
+
+        if btn == 'Rating distribution':
+            st.write('---')
+            st.write('rating distribution for all movies. The average rating lies at 4')
+            ratings_img = Image.open(r'resources/imgs/rating_distribution.PNG')
+            st.image(ratings_img)
+
+        if btn == 'top actors':
+            st.write('---')
+            st.write('Top twenty actors in the dataset')
+            actors_img = Image.open(r'resources/imgs/actors_distribution.PNG')
+            st.image(actors_img)
+
+        if btn =='genre distribution':
+            st.write('---')
+            genres_img = Image.open(r'resources/imgs/genres.PNG')
+            st.write('Top twenty genres on the dataset')
+            st.image(genres_img)
+    if page_selection == 'Solution Overview':
+        st.header('Our solution')
+        st.markdown("""
+        Our solution is a fine balance between accuracy and efficiency.
+        We used an SVDpp model to make predictions of movie ratings, the model was 
+        utilised to perform two types of filtering
+        * content base filtering
+        * collaborative based filtering
+        """)
+        st.write('---')
+        st.header('content based filtering')
+        st.write("""
+        The Content-Based Recommender relies on the similarity of the items being recommended.
+        The basic idea is that if you like an item, then you will also like a “similar” item. It generally works well when it's easy to determine the context/properties of each item.
+        A content-based recommender works with data that the user provides, either explicitly movie ratings for the MovieLens dataset. Based on that data, a user profile is generated,
+        which is then used to make suggestions to the user. As the user provides more inputs or takes actions on the recommendations, the engine becomes more and more accurate.
+        """)
+
+        st.write('---')
+
+        st.header('Collaborative filtering')
+        st.write('''
+        The content based engine suffers from some severe limitations. It is only capable of suggesting movies which are *close* to a certain movie. 
+        That is, it is not capable of capturing tastes and providing recommendations across genres.
+
+        Collaborative Filtering is based on the idea that users can be used to predict how much a user will like a particular product or service those users have used/experienced.
+        ''')
+
+        st.write('---')
+
+        st.header('Model performance')
+        st.markdown('''
+        We built and tested seven different collaborative filtering models and compared their performance using a 
+        statistical measure known as the root mean squared error (**RMSE**), which determines the average squared difference 
+        between the estimated values and the actual value. A low RMSE value indicates high model accuracy.
+        ''')
+
+        st.write('**Visual represenation of the performance of our model**')
+        evaluation_img = Image.open(r'resources/imgs/model_evaluation.PNG')
+        st.image(evaluation_img)
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
